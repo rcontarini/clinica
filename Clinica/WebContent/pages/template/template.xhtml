@@ -10,31 +10,25 @@
 
 <h:head>
 	<h:outputStylesheet library="css" name="sistema.css" />
-
+	
 </h:head>
 
 <h:body>
 	<h:form id="form" >
 	  <p:growl id="growl" showDetail="false" sticky="true" />  
-		<p:toolbar>
-			<f:facet name="right" >
+		
+		<p:layout fullPage="true" style="height: 650px;"  >
+		
+			<p:layoutUnit position="north" resizable="false" styleClass="north">
 				<p:outputLabel value="#{loginBean.psicoTela.crp}" style="color: black;" ></p:outputLabel>
 			
 				<p:commandButton actionListener="#{loginBean.logOut}" value="Logout" style=" border: none !important; 
-				height: 40px;  margin-left: 300px; margin-top: 1.5%; box-shadow: none !important; background-color: none !important; color: black; background: none !important;" />
-			</f:facet>
+				 margin-left: 10%; box-shadow: none !important; background-color: none !important; color: black; background: none !important;" />
+			</p:layoutUnit>
 			
+			<p:layoutUnit  position="west" styleClass="west" >
 			
-			<f:facet name="left"  >
-				<p:graphicImage library="image" name="logo-algaworks.png" style="margin-top: 1.5%;" ></p:graphicImage>
-			
-			</f:facet>
-			
-		</p:toolbar>
-		<p:layout style="margin-left: -8px; margin-right: -8px; height: 650px;"  >
-			
-			<p:layoutUnit  position="west" resizable="true" styleClass="west" >
-			
+		
 				<p:tieredMenu style="width: 100px; margin-top: -1%;" styleClass="menu">
 					<p:submenu label="Paciente">
 						<p:menuitem value="Cadastrar"  icon="ui-icon-disk"  url="pages/paciente/paciente_trn.xhtml"/>
