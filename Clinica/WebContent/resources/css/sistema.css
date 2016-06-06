@@ -1,0 +1,133 @@
+@CHARSET "UTF-8";
+
+
+.ui-widget, .ui-widget .ui-widget {    
+    font-size: 96% !important;
+}
+
+body{
+	
+}
+
+.ui-menuitem-text {
+	color: white;
+}
+
+
+.ui-tabmenu{
+  border: none !important;
+  background: blue;
+  background-color: blue;
+  color: blue;
+}
+
+.menuBar, .ui-menuitem-text{
+	color: black;
+}
+
+.menuBar, .ui-tabmenu-nav{
+	border: 0px !important;
+	background: none !important;
+	background-color: #2F4F4F !important;
+}
+
+.menuBar, .ui-tabmenuitem{
+	border: 0px !important;
+	background: none !important;
+	background-color: none !important;
+}
+
+.menu, .ui-menuitem-text {
+	color: white;
+}
+
+.menu, .ui-tieredmenu {
+	border: 0px !important;
+	background: none !important;
+	background-color: none !important;
+}
+
+.ui-layout-unit, .ui-widget, .ui-widget-content, .ui-corner-all, .ui-layout-west, .ui-layout-pane, .ui-layout-pane-west {
+	visibility: none !important;
+}
+
+.separator {
+  background: blue;
+  background-color: blue;
+  color: blue;
+}
+
+.ui-layout-unit {
+	padding: 0px !important;
+}
+
+.west .ui-layout-unit-content{
+	padding: 0px !important;
+	border: none !important;
+	background: #1C1C1C;
+}
+
+.center .ui-layout-unit-content{
+	padding: 0px !important;
+	border: none !important;
+	background: #E8E8E8;
+}
+
+.ui-panel-titlebar, .ui-widget-header, .ui-helper-clearfix{
+/* 	background: #363636; */
+/* 	background-color: #363636; */
+	color: #363636;
+}
+
+.ui-widget, .ui-panelmenu-header, .ui-state-default, .ui-corner-all {
+	color: none !important;
+	background-color: none !important;
+}
+
+.ui-wizard-step-title {
+	font-size: 15px !important;
+	
+}
+
+.ui-toolbar {
+	margin-top: -1%;
+	margin-left: -0.8%;
+	margin-right: -0.8%;
+	height: 5%;
+	background-color: white !important;
+	background: white !important;
+}
+
+#logout {
+	margin-right: 3% !important;
+	background-color: #2F4F4F;
+	background: #2F4F4F;
+}
+
+.ui-layout-unit {
+	margin: none !important;
+	border: none !important;
+	padding: none !important;
+	
+}
+
+
+
+.ui-panelmenu-header {
+	background: #DCDCDC;
+	background-color: #DCDCDC;
+	color: #DCDCDC;
+}
+
+.ui-layout-unit-content, .ui-widget-content"{
+	background: #DCDCDC;
+	background-color: #DCDCDC;
+	color: #DCDCDC;
+}
+
+.ui-wizard-step-titles, .ui-helper-reset, .ui-helper-clearfix {
+	background-color: white !important;
+	background: white;
+}
+
+

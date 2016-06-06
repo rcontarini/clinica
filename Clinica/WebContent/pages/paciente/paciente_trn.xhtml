@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/pages/paciente/paciente_def.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	<ui:define name="content">
+		
+		<p:panel style="margin-top: 30px;  ">
+			<p:commandButton actionListener="#{pacienteBean.listar}" ajax="true" value="Listar Clientes" style="border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;" />
+		</p:panel>	
+		
+		<p:panel header="Cadastro Inicial" style="margin-top: 10px; color: #363636 !important;" >
+			<h:panelGrid columns="2" >
+				<p:column>
+					<p:outputLabel value="Nome*" style="font-size: 20px;" />
+				</p:column>
+				
+				<p:column>
+					<p:inputText id="nome" value="#{pacienteBean.paciente.pessoa.nome}" size="50" required="true" 
+					requiredMessage="Favor preencher campos obrigatórios"/>
+					<p:message for="nome"/>
+				</p:column>
+				
+				<p:column>
+					<p:outputLabel value="Grupo*"   />
+				</p:column>
+				
+				<p:column>
+					<p:selectOneRadio id="grupo" value="#{pacienteBean.paciente.grupo}" required="true"  requiredMessage="Campo Grupo" >
+						<f:selectItem itemValue="adultos"  itemLabel="Adultos"  />
+						<f:selectItem itemValue="criancas"  itemLabel="Crianças"  />
+						<f:selectItem itemValue="idosos"  itemLabel="Idosos"  />
+						<f:selectItem itemValue="adolescentes"  itemLabel="Adolescentes"  />
+					</p:selectOneRadio>
+					<p:message for="grupo"/>
+				</p:column>
+			</h:panelGrid>
+			<h:panelGrid columns="4" >
+				<p:column>
+					<p:outputLabel value="Telefone Celular*"  />
+				</p:column>			
+				
+				<p:column>
+					<p:inputMask id="cel" mask="(99) 99999-9999" value="#{pacienteBean.paciente.pessoa.celular}" required="true"
+					requiredMessage="Campo Obrigatório" />
+					<p:message for="cel"/>
+				</p:column>
+				
+				<p:column>
+					<p:outputLabel value="Telefone Fixo" />
+				</p:column>
+				
+				<p:column>
+					<p:inputMask mask="(99) 99999-9999" value="#{pacienteBean.paciente.pessoa.telefone}" />
+				</p:column>
+			</h:panelGrid>
+			<h:panelGrid columns="2" >
+				<p:column>
+					<p:outputLabel  value="E-mail" />
+				</p:column>
+				<p:column>
+					<p:inputText id="email" value="#{pacienteBean.paciente.pessoa.email}" size="50" required="true" 
+					requiredMessage="Campo Obrigatorio"/>
+					<p:message for="email"></p:message>
+				</p:column>
+				<p:column>
+					<p:outputLabel  value="Possui Convênio? " />
+				</p:column>
+			
+				<p:column>
+					<p:selectOneMenu id="convenio" value="#{pacienteBean.paciente.convenio}" var="convenio" title="Selecione" required="true"
+					requiredMessage="Campo Obrigatorio">
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItem itemLabel="Sim" itemValue="sim" />
+						<f:selectItem itemLabel="Não" itemValue="nao" />
+						<p:message for="convenio"/>
+					</p:selectOneMenu>
+				</p:column>
+			
+				<p:column>
+					<p:outputLabel value="Valor por Sessão"  />
+				</p:column>	
+				
+				<p:column>
+					<p:inputText id="valor" size="10" value="#{pacienteBean.paciente.valorPorSessão}" style="margin-top: 10px;" required="true"
+					  requiredMessage="Campo Obrigatorio"/>
+					<p:message for="valor" />
+				</p:column>
+			</h:panelGrid>
+			
+			<p:commandButton   value="Avançar" style="margin-top: 30px; border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;
+			" action="#{pacienteBean.salvar}" />
+			
+		</p:panel>
+			
+	</ui:define>
+</ui:composition>

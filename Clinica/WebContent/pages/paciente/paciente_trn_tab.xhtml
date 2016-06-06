@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/pages/paciente/paciente_trn_cadastro.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="dadosPrincipais">
+		
+		<p:outputLabel value="Cadastro de Clientes" style="font-size: 20px !important; font: bold; color: #696969;" ></p:outputLabel>
+		
+		
+		<p:panel style="margin-top: 70px;  ">
+			<p:commandButton value="Listar Clientes" style="border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;" />
+		</p:panel>	
+		
+		<p:panel header="Cadastro de Cliente"  style="margin-top: 30px; color: #363636 !important;" >
+			<h:panelGrid columns="2" >
+				<p:column>
+					<p:outputLabel value="Nome*" style="font-size: 20px;" />
+				</p:column>
+				
+				<p:column>
+					<p:inputText value="#{pacienteBean.pessoa.nome}" size="70" />
+				</p:column>
+				
+				<p:column>
+					<p:outputLabel value="Grupo*" style="margin-top: 10px;"  />
+				</p:column>
+				
+				<p:column>
+					<p:selectOneRadio value="#{pacienteBean.paciente.grupo}"  >
+						<f:selectItem itemValue="adultos"  itemLabel="Adultos"  />
+						<f:selectItem itemValue="criancas"  itemLabel="Crianças"  />
+						<f:selectItem itemValue="idosos"  itemLabel="Idosos"  />
+					</p:selectOneRadio>
+				</p:column>
+			</h:panelGrid>
+			<h:panelGrid columns="4" >
+				<p:column>
+					<p:outputLabel value="Telefone Celular" style="margin-top: 10px;" />
+				</p:column>			
+				
+				<p:column>
+					<p:inputText value="#{pacienteBean.pessoa.celular}" style="margin-top: 10px;"/>
+				</p:column>
+				
+				<p:column>
+					<p:outputLabel value="Telefone Fixo" style="margin-top: 10px;"/>
+				</p:column>
+				
+				<p:column>
+					<p:inputText value="#{pacienteBean.pessoa.telefone}" style="margin-top: 10px;"/>
+				</p:column>
+			</h:panelGrid>
+			<h:panelGrid columns="2" >
+				<p:column>
+					<p:outputLabel value="Possui Convênio? " />
+				</p:column>
+			
+				<p:column>
+					<p:selectOneMenu value="#{pacienteBean.paciente.convenio}" var="convenio" title="Selecione" >
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItem itemLabel="Sim" itemValue="#" />
+						<f:selectItem itemLabel="Não" itemValue="#" />
+					</p:selectOneMenu>
+				</p:column>
+			
+				<p:column>
+					<p:outputLabel value="Valor por Sessão" style="margin-top: 10px;" />
+				</p:column>	
+				
+				<p:column>
+					<p:inputText value="#{pacienteBean.paciente.valorPorSessão}" style="margin-top: 10px;" />
+				</p:column>
+			</h:panelGrid>
+			
+			<p:commandButton   value="Proximo Passo" style="margin-top: 30px; border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;
+			" actionListener="#{pacienteBean.cadastroContinuar}" />
+			
+		</p:panel>
+	</ui:define>
+</ui:composition>

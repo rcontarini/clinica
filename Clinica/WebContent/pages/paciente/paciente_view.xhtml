@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/pages/template/template.xhtml" 
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+	
+	
+	<ui:define name="content">
+	
+	
+	<p:panel style="margin-top:30px;" >
+		<p:commandButton actionListener="#{pacienteBean.cadastrar}" value="Adicionar Cliente"  style="background: #006400; color: #FFFAF0; background-color: #006400;" />
+		<p:commandButton value="Desativar Cliente" ajax="true" update="lista" style="background: #FF0000; color: #FFFAF0; background-color: #FF0000;"
+		 actionListener="#{pacienteBean.desativarUsuario}" />
+		<p:commandButton rendered="#{pacienteBean.listaFiltrada[1].status} == true" value="Ativar Cliente" ajax="true" update="lista" style="background: #FF0000; color: #FFFAF0; background-color: #FF0000;" actionListener="#{pacienteBean.desativarUsuario}" />
+	</p:panel>
+	
+	<h:panelGrid columns="3" style="margin-top: 20px;" >
+		<p:column>
+			<p:outputLabel value="Pesquisar:" />		
+		</p:column>
+		
+		<p:column>
+			<p:inputText size="20" value="#{pacienteBean.pesquisa}"/>
+		</p:column>
+		
+		<p:column>
+			<p:commandButton icon="ui-icon-check" actionListener="#{pacienteBean.pesquisar}" update="form"/>
+		</p:column>
+	</h:panelGrid>
+	
+	<p:dataTable id="lista" rows="8" var="paciente" value="#{pacienteBean.listaFiltrada}" 
+	selection="#{pacienteBean.paciente}" rowKey="#{paciente.id}" 
+	style="margin-top: 30px;" paginator="true" paginatorPosition="bottom">
+		
+		<p:column selectionMode="single" width="4%;">
+		</p:column>
+		
+		<p:column headerText="ID"  width="4%;">
+			<p:outputLabel value="#{paciente.id}" />
+		</p:column>
+		
+		<p:column headerText="Nome do Cliente" width="30%;" >
+			<p:outputLabel value="#{paciente.pessoa.nome}" />
+		</p:column>
+		
+		<p:column headerText="E-mail" width="30%;">
+			<p:outputLabel value="#{paciente.pessoa.email}" ></p:outputLabel>
+		</p:column>
+		
+		<p:column headerText="Telefone">
+			<p:outputLabel value="#{paciente.pessoa.telefone}"/>
+		</p:column>
+		
+		<p:column headerText="Opções" >
+			<p:commandButton icon="ui-icon-pencil" actionListener="#{pacienteBean.editar}"  label="Finalizar Cadastro"  >
+				<f:attribute name="editarUsuario"  value="#{paciente}" ></f:attribute>
+			</p:commandButton>
+			<p:commandButton icon="ui-icon-trash" actionListener="#{pacienteBean.excluir}" ajax="true" update="lista" >
+				<f:attribute name="excluirUsuario" value="#{paciente}"></f:attribute>
+			</p:commandButton>
+			<p:commandButton icon="ui-icon-calendar" actionListener="#{pacienteBean.dadosGerais}" title="Adicionar Sessão"  >
+				<f:attribute name="continuarCadastro" value="#{paciente}"></f:attribute>
+			</p:commandButton>
+		</p:column>
+	
+	
+	</p:dataTable>
+	</ui:define>
+
+
+</ui:composition>

@@ -1,0 +1,16 @@
+@CHARSET "UTF-8";
+
+.ui-widget, .ui-widget .ui-widget {    
+    font-size: 90% !important;
+}
+
+
+.ui-button {
+	margin-right: 3% !important;
+	background-color: #2F4F4F;
+	background: #2F4F4F;
+}
+
+
+
+

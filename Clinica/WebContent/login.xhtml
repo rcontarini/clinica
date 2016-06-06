@@ -1,0 +1,81 @@
+<!DOCTYPE html >
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<h:outputStylesheet library="css" name="sistema.css" />
+</h:head>
+
+
+<h:body style="background: #FFFAFA;" >
+
+
+	<h:form id="form">
+		<p:toolbar>
+	
+		</p:toolbar>
+		<p:growl id="mensagens" />
+		<p:panel header="Login" 
+			style="font-size: 20px !important; height: 450px !important; background-color: #EOFFFF ; margin-top: 5%; margin-left: 35% !important; margin-right: 35% !important;">
+
+			<h:panelGrid columns="1" style="margin-top: 15%; margin-left: 3% !important;">
+
+				<p:column>
+					<p:outputLabel value="E-mail: " style="font-size: 18px !important;" />
+				</p:column>
+
+				<p:column>
+					<p:inputText value="#{loginBean.psicoTela.crp}" size="25"
+						style="height: 30px" />
+				</p:column>
+
+				<p:column>
+					<p:outputLabel value="Senha: " style="font-size: 18px !important;" />
+				</p:column>
+
+				<p:column>
+					<p:password value="#{loginBean.psicoTela.senha}" size="25"
+						style="height: 30px" />
+				</p:column>
+				
+				<p:column>
+					<p:commandButton value="ENTRAR" actionListener="#{loginBean.login}"
+					style=" width: 99%; height: 40px !important; margin-top: 30px; border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;"
+					update="mensagens" />
+				</p:column>
+			</h:panelGrid>
+
+		</p:panel >
+		<p:dialog header="Alterar Senha" widgetVar="dialog.senha">
+			<h:panelGrid columns="2" id="senha">
+				<p:column>
+					<p:outputLabel value="Nova Senha:" />
+				</p:column>
+
+				<p:column>
+					<p:inputText value="#{loginBean.senha}" />
+				</p:column>
+
+				<p:column>
+					<p:outputLabel value="Confirmar Senha:" />
+				</p:column>
+
+				<p:column>
+					<p:inputText value="#" />
+				</p:column>
+
+			</h:panelGrid>
+
+			<p:commandButton value="SALVAR"
+				actionListener="#{loginBean.alterarSenha}"
+				update="mensagens: form:senha" />
+
+		</p:dialog>
+	</h:form>
+</h:body>
+
+</html>
