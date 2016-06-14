@@ -2,7 +2,7 @@ package br.com.clinica.enums;
 
 public enum PaginasValues {
 	
-	INDEX_LOGIN ("/login.xhtml"),
+	ATIVO ("/login.xhtml"),
 	PACIENTE_VIEW ("/pages/paciente/paciente_view.xhtml"),
 	PACIENTE_MENU_TRN ("/pages/paciente/paciente_menu_principal.xhtml"),
 	PACIENTE_TRN_CADASTRO ("/pages/paciente/paciente_trn_cadastro.xhtml"),

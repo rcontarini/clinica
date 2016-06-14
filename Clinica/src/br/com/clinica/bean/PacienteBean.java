@@ -30,7 +30,6 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 	private Paciente paciente;
 	private List<Paciente> listarPacientes;
 	private List<Paciente> listaFiltrada;
-	private PaginasValues pageNavigate = null;
 	private String pesquisa;
 	private PacienteRN pacienteRN;
 	
@@ -47,6 +46,9 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 			}
 	}
 	
+	/*
+	 * Alterar para buscar do banco
+	 */
 	public void pesquisar(){
 		this.listaFiltrada.clear();
 		if(this.pesquisa != null && this.listarPacientes.size() > 0){
@@ -60,22 +62,31 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 		}
 	}
 	
+	/*
+	 * Salvar dados principais paciente
+	 */
+			
 	public void salvar(){
 		this.pacienteRN.salvar(this.paciente);
 		getSession().setAttribute(Contants.SESSION_OBJECT_KEY, this.paciente);
+		addMessageInfo("Cadastro salvo com sucesso!", "Info");
 		String url = this.getContextPath().concat(PaginasValues.PACIENTE_INI_VIEW.getCaminho()+"?faces-redirect=true");
 		redirectToPage(url);
 	}
 	
+	/*
+	 * Salvar dados secundarios pacientes
+	 */
+	
 	public void salvarCadFinal(){
 		this.pacienteRN = new PacienteRN();
 		this.pacienteRN.salvar(this.paciente);
+		addMessageInfo("Cadastro salvo com sucesso!", "Info: ");
 	}
 	
-	public void excluir(ActionEvent e){
-		this.paciente = (Paciente) e.getComponent().getAttributes().get("excluirUsuario");
-		this.pacienteRN.excluir(this.paciente);
-	}
+	/*
+	 * Enviar paciente selecionado para tela de opções
+	 */
 	
 	public void dadosGerais(ActionEvent e){
 		this.paciente  = (Paciente) e.getComponent().getAttributes().get("continuarCadastro");
@@ -84,6 +95,10 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 		redirectToPage(url);
 	}
 
+	/*
+	 * Edita cadastro principal paciente
+	 */
+	
 	public void editar(ActionEvent e) {
 		this.paciente = (Paciente) e.getComponent().getAttributes().get("editarUsuario");
 		getSession().setAttribute(Contants.SESSION_OBJECT_KEY, this.paciente);
@@ -91,10 +106,23 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 		redirectToPage(url);
 	}
 	
+	/*
+	 * Desativar paciente e atualiza datatable
+	 */
 	public void desativarUsuario(){
 		this.pacienteRN.desativarUsuario(this.paciente);
-		String url = this.getContextPath().concat(PaginasValues.PACIENTE_VIEW.getCaminho()+"?faces-redirect=true");
-		redirectToPage(url);
+		addMessageInfo("Paciente desativado com sucesso!", "Info: ");
+	}
+	
+	/*
+	 * Deleta paciente
+	 */
+	
+	public void excluirPaciente(ActionEvent e){
+		this.paciente = (Paciente) e.getComponent().getAttributes().get("excluirUsuario");
+		this.pacienteRN.excluir(this.paciente);
+		this.listaFiltrada = this.pacienteRN.listarPaciente();
+		addMessageInfo("Paciente deletado com sucesso!", "Info: ");
 	}
 
 	public void cadastrar(){
@@ -108,6 +136,7 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 	}
 	
 	public void listar(){
+		getSession().setAttribute(Contants.SESSION_OBJECT_KEY, null);
 		String url = getContextPath().concat(PaginasValues.PACIENTE_VIEW.getCaminho()+"?faces-redirect=true");
 		redirectToPage(url);
 	}

@@ -11,41 +11,35 @@
 </h:head>
 
 
-<h:body style="background: #FFFAFA;" >
-
+<h:body>
 
 	<h:form id="form">
-		<p:toolbar>
-	
-		</p:toolbar>
-		<p:growl id="mensagens" />
+		<p:messages id="messagesLogin" showDetail="false" autoUpdate="true" closable="true" />  
 		<p:panel header="Login" 
-			style="font-size: 20px !important; height: 450px !important; background-color: #EOFFFF ; margin-top: 5%; margin-left: 35% !important; margin-right: 35% !important;">
+			style="font-size: 20px !important; height: 400px !important; background-color: #EOFFFF ; margin-top: 5%; margin-left: 35% !important; margin-right: 35% !important;">
 
-			<h:panelGrid columns="1" style="margin-top: 15%; margin-left: 3% !important;">
+			<h:panelGrid style="margin-top: 15%; margin-left: 4% !important;">
 
 				<p:column>
-					<p:outputLabel value="E-mail: " style="font-size: 18px !important;" />
+					<p:outputLabel value="E-mail:" />
 				</p:column>
 
 				<p:column>
-					<p:inputText value="#{loginBean.psicoTela.crp}" size="25"
-						style="height: 30px" />
+					<p:inputText value="#{loginBean.psicoTela.crp}" size="25"/>
 				</p:column>
 
 				<p:column>
-					<p:outputLabel value="Senha: " style="font-size: 18px !important;" />
+					<p:outputLabel value="Senha: " />
 				</p:column>
 
 				<p:column>
-					<p:password value="#{loginBean.psicoTela.senha}" size="25"
-						style="height: 30px" />
+					<p:password value="#{loginBean.psicoTela.senha}" size="25"/>
 				</p:column>
 				
 				<p:column>
 					<p:commandButton value="ENTRAR" actionListener="#{loginBean.login}"
-					style=" width: 99%; height: 40px !important; margin-top: 30px; border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;"
-					update="mensagens" />
+					style=" width: 99%; margin-top: 30px; border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;"
+					update="messagesLogin" />
 				</p:column>
 			</h:panelGrid>
 
@@ -71,7 +65,7 @@
 
 			<p:commandButton value="SALVAR"
 				actionListener="#{loginBean.alterarSenha}"
-				update="mensagens: form:senha" />
+				update="messagesLogin: form:senha" />
 
 		</p:dialog>
 	</h:form>

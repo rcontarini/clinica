@@ -11,7 +11,7 @@
 	<ui:define name="content">
 		
 		<p:panel style="margin-top: 30px;  ">
-			<p:commandButton actionListener="#{pacienteBean.listar}" ajax="true" value="Listar Clientes" style="border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;" />
+			<p:commandButton actionListener="#{pacienteBean.listar}"  value="Listar Clientes" style="border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;" />
 		</p:panel>	
 		
 		<p:panel header="Cadastro Inicial" style="margin-top: 10px; color: #363636 !important;" >
@@ -39,32 +39,32 @@
 					</p:selectOneRadio>
 					<p:message for="grupo"/>
 				</p:column>
-			</h:panelGrid>
-			<h:panelGrid columns="4" >
+				
 				<p:column>
 					<p:outputLabel value="Telefone Celular*"  />
 				</p:column>			
 				
 				<p:column>
 					<p:inputMask id="cel" mask="(99) 99999-9999" value="#{pacienteBean.paciente.pessoa.celular}" required="true"
-					requiredMessage="Campo Obrigatório" />
+					size="12" requiredMessage="Campo Obrigatório" />
 					<p:message for="cel"/>
 				</p:column>
 				
 				<p:column>
-					<p:outputLabel value="Telefone Fixo" />
+					<p:outputLabel  value="Telefone Fixo" />
 				</p:column>
 				
 				<p:column>
-					<p:inputMask mask="(99) 99999-9999" value="#{pacienteBean.paciente.pessoa.telefone}" />
+					<p:inputMask size="12" mask="(99) 9999-9999" value="#{pacienteBean.paciente.pessoa.telefone}" />
 				</p:column>
-			</h:panelGrid>
-			<h:panelGrid columns="2" >
+				
+				
+		
 				<p:column>
 					<p:outputLabel  value="E-mail" />
 				</p:column>
 				<p:column>
-					<p:inputText id="email" value="#{pacienteBean.paciente.pessoa.email}" size="50" required="true" 
+					<p:inputText id="email" value="#{pacienteBean.paciente.pessoa.email}" size="30" required="true" 
 					requiredMessage="Campo Obrigatorio"/>
 					<p:message for="email"></p:message>
 				</p:column>
@@ -87,12 +87,11 @@
 				</p:column>	
 				
 				<p:column>
-					<p:inputText id="valor" size="10" value="#{pacienteBean.paciente.valorPorSessão}" style="margin-top: 10px;" required="true"
+					<p:inputText  id="valor" size="5" value="#{pacienteBean.paciente.valorSessao}"  required="true"
 					  requiredMessage="Campo Obrigatorio"/>
 					<p:message for="valor" />
 				</p:column>
-			</h:panelGrid>
-			
+				</h:panelGrid>
 			<p:commandButton   value="Avançar" style="margin-top: 30px; border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;
 			" action="#{pacienteBean.salvar}" />
 			

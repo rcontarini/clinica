@@ -21,6 +21,7 @@ body{
   color: blue;
 }
 
+
 .menuBar, .ui-menuitem-text{
 	color: black;
 }
@@ -41,10 +42,25 @@ body{
 	color: white;
 }
 
-.menu, .ui-tieredmenu {
-	border: 0px !important;
+.menu, .ui-panelmenu-content{
+	border: none !important;
 	background: none !important;
 	background-color: none !important;
+}
+
+.menu, .ui-panelmenu-header {
+	border: none !important;
+	background: none !important;
+	background-color: none !important;
+}
+
+.menu, .ui-panelmenu, .ui-panelmenu-header a{
+	color: white !important;
+	border: none !important;
+}
+
+.menu, .ui-panelmenu-content{
+	border: none !important;
 }
 
 .ui-layout-unit, .ui-widget, .ui-widget-content, .ui-corner-all, .ui-layout-west, .ui-layout-pane, .ui-layout-pane-west {
@@ -73,10 +89,14 @@ body{
 	background: #E8E8E8;
 }
 
+.north .ui-layout-unit-content{
+	background: #000080;
+}
+
 .ui-panel-titlebar, .ui-widget-header, .ui-helper-clearfix{
 /* 	background: #363636; */
 /* 	background-color: #363636; */
-	color: #363636;
+	color: black;
 }
 
 .ui-widget, .ui-panelmenu-header, .ui-state-default, .ui-corner-all {
@@ -95,7 +115,7 @@ body{
 }
 
 .north{
-	height: 5% !important;
+	height: 7.5% !important;
 }
 
 #logout {

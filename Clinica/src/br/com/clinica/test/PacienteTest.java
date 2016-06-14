@@ -33,7 +33,7 @@ public class PacienteTest {
 		paciente.setProfissao("Pedreiro");
 		paciente.setPsicologo(psicologo);
 		paciente.setSexo("Masculino");
-		paciente.setValorPorSessão(new Long(80));
+		paciente.setValorSessao(new Long(80));
 		
 		PacienteDAO pacienteDAO = new PacienteDAO();
 		pacienteDAO.salvar(paciente);

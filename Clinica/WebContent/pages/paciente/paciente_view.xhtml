@@ -10,13 +10,36 @@
 	
 	
 	<ui:define name="content">
-	
-	
 	<p:panel style="margin-top:30px;" >
-		<p:commandButton actionListener="#{pacienteBean.cadastrar}" value="Adicionar Cliente"  style="background: #006400; color: #FFFAF0; background-color: #006400;" />
-		<p:commandButton value="Desativar Cliente" ajax="true" update="lista" style="background: #FF0000; color: #FFFAF0; background-color: #FF0000;"
-		 actionListener="#{pacienteBean.desativarUsuario}" />
-		<p:commandButton rendered="#{pacienteBean.listaFiltrada[1].status} == true" value="Ativar Cliente" ajax="true" update="lista" style="background: #FF0000; color: #FFFAF0; background-color: #FF0000;" actionListener="#{pacienteBean.desativarUsuario}" />
+	 <h:panelGrid columns="2" >
+	 	<p:column style="width: 50%;">
+	 		<h:panelGrid columns="2">
+	 			<p:column>
+					<p:outputLabel value="Status: " ></p:outputLabel>
+	 			</p:column>
+	 			<p:column>
+	 				<p:selectOneMenu var="status" value="#{pacienteBean.paciente.status}" >
+	 					<f:selectItem itemLabel="Selecione" itemValue=""></f:selectItem>
+						<f:selectItem itemLabel="Ativo" itemValue="A" ></f:selectItem>
+						<f:selectItem itemLabel="Inativo" itemValue="I" ></f:selectItem>
+					</p:selectOneMenu>
+	 			</p:column>
+	 		</h:panelGrid>
+	 	</p:column>	
+	 	<p:column style="width:50%;">
+	 		<h:panelGrid columns="2">
+	 			<p:column>
+	 				<p:commandButton actionListener="#{pacienteBean.cadastrar}" value="Novo"  
+	 				style="background: #006400; margin-left: 1130%; color: #FFFAF0; background-color: #006400;" />
+	 			</p:column>
+	 			<p:column>
+					<p:commandButton  value="Desativar" ajax="true" update="lista" style="background: #FF0000; 
+					margin-left: 800%; color: #FFFAF0; background-color: #FF0000;"
+					 actionListener="#{pacienteBean.desativarUsuario}" />
+	 			</p:column>
+	 		</h:panelGrid>
+	 	</p:column>
+	 </h:panelGrid>
 	</p:panel>
 	
 	<h:panelGrid columns="3" style="margin-top: 20px;" >
@@ -34,42 +57,47 @@
 	</h:panelGrid>
 	
 	<p:dataTable id="lista" rows="8" var="paciente" value="#{pacienteBean.listaFiltrada}" 
-	selection="#{pacienteBean.paciente}" rowKey="#{paciente.id}" 
+	selection="#{pacienteBean.paciente}" selectionMode="single" rowKey="#{paciente.id}"
 	style="margin-top: 30px;" paginator="true" paginatorPosition="bottom">
-		
-		<p:column selectionMode="single" width="4%;">
+		<p:column selectionMode="single" style="width: 3.5%;" >
 		</p:column>
 		
 		<p:column headerText="ID"  width="4%;">
 			<p:outputLabel value="#{paciente.id}" />
 		</p:column>
 		
-		<p:column headerText="Nome do Cliente" width="30%;" >
+		<p:column headerText="Nome do Cliente" width="25%;" >
 			<p:outputLabel value="#{paciente.pessoa.nome}" />
 		</p:column>
 		
-		<p:column headerText="E-mail" width="30%;">
+		<p:column headerText="E-mail" width="25%;">
 			<p:outputLabel value="#{paciente.pessoa.email}" ></p:outputLabel>
 		</p:column>
 		
-		<p:column headerText="Telefone">
+		<p:column headerText="Telefone" width="19.5%;">
 			<p:outputLabel value="#{paciente.pessoa.telefone}"/>
 		</p:column>
 		
 		<p:column headerText="Opções" >
-			<p:commandButton icon="ui-icon-pencil" actionListener="#{pacienteBean.editar}"  label="Finalizar Cadastro"  >
+			<p:commandButton value="Excluir" actionListener="#{pacienteBean.excluirPaciente}" update="lista" ajax="true"
+			style="color: #FFFAF0; background-color: #FF0000; background: #FF0000;">
+				<f:attribute name="excluirUsuario" value="#{paciente}"></f:attribute>
+				 <p:confirm header="Confirmação!" message="Tem certeza que deseja excluir este paciente?" icon="ui-icon-alert" />
+			</p:commandButton>
+			<p:commandButton value="Editar" actionListener="#{pacienteBean.editar}" label="Finalizar Cadastro"
+			style="color: #FFFAF0; background-color: #FF8C00; background: #FF8C00;">
 				<f:attribute name="editarUsuario"  value="#{paciente}" ></f:attribute>
 			</p:commandButton>
-			<p:commandButton icon="ui-icon-trash" actionListener="#{pacienteBean.excluir}" ajax="true" update="lista" >
-				<f:attribute name="excluirUsuario" value="#{paciente}"></f:attribute>
-			</p:commandButton>
-			<p:commandButton icon="ui-icon-calendar" actionListener="#{pacienteBean.dadosGerais}" title="Adicionar Sessão"  >
+			<p:commandButton value="Detalhes" actionListener="#{pacienteBean.dadosGerais}" title="Adicionar Sessão" 
+			style="color: #FFFAF0; background-color: #1874CD; background: #1874CD;" >
 				<f:attribute name="continuarCadastro" value="#{paciente}"></f:attribute>
 			</p:commandButton>
 		</p:column>
-	
-	
 	</p:dataTable>
+		<p:confirmDialog  global="true" showEffect="fade" hideEffect="fade" >
+	        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+	        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+   	    </p:confirmDialog>
 	</ui:define>
 
 

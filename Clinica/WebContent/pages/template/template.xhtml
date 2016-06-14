@@ -10,28 +10,45 @@
 
 <h:head>
 	<h:outputStylesheet library="css" name="sistema.css" />
-	
 </h:head>
 
 <h:body>
 	<h:form id="form" >
-	  <p:growl id="growl" showDetail="false" sticky="true" />  
-		
 		<p:layout fullPage="true" style="height: 650px;"  >
 		
-			<p:layoutUnit position="north" resizable="false" styleClass="north">
-				<p:outputLabel value="#{loginBean.psicoTela.crp}" style="color: black;" ></p:outputLabel>
+			<p:layoutUnit position="north"   resizable="false" styleClass="north">
+			<h:panelGrid columns="3" style="width:100%;" >
+			  <p:column style="width:33%;">
+			  	<h:panelGrid>
+					<p:column>
+						<p:graphicImage library="image" name="logo-algaworks.png" ></p:graphicImage>
+					</p:column>			   	
+			  	</h:panelGrid>
+			  </p:column>
 			
-				<p:commandButton actionListener="#{loginBean.logOut}" value="Logout" style=" border: none !important; 
-				 margin-left: 10%; box-shadow: none !important; background-color: none !important; color: black; background: none !important;" />
+			  <p:column style="width:33%;">
+			  	<h:panelGrid columns="1">
+			  	  <p:column>
+					<p:outputLabel value="#{loginBean.psicoTela.crp}" style="color: white; margin-left: 800%;" ></p:outputLabel>
+			  	  </p:column>
+			  	</h:panelGrid>
+			  </p:column>
+			
+			  <p:column style="width:33%;">
+			  	<h:panelGrid>
+			  		<p:column>
+						<p:commandButton actionListener="#{loginBean.logOut}" value="Logout" style=" border: none !important; 
+						 margin-left: 390%; box-shadow: none !important; background-color: none !important; color: white; background: none !important;" />
+			  		</p:column>
+			  	</h:panelGrid>
+			  </p:column>
+			</h:panelGrid>
 			</p:layoutUnit>
 			
-			<p:layoutUnit  position="west" styleClass="west" >
-			
-		
-				<p:tieredMenu style="width: 100px; margin-top: -1%;" styleClass="menu">
+			<p:layoutUnit  visible="true"  position="west" styleClass="west"  >
+				<p:panelMenu  style="width: 200px; margin-top: -1%;" styleClass="menu">
 					<p:submenu label="Paciente">
-						<p:menuitem value="Cadastrar"  icon="ui-icon-disk"  url="pages/paciente/paciente_trn.xhtml"/>
+						<p:menuitem value="Cadastrar"   url="/pages/paciente/paciente_trn.xhtml"/>
 						<p:menuitem value="Listar"  url="/pages/paciente/paciente_view.xhtml"
 							icon="ui-icon-arrowrefresh-1-w" />
 					</p:submenu>
@@ -50,13 +67,22 @@
 						</p:submenu>
 						<p:menuitem value="Mobile" icon="ui-icon-signal" />
 					</p:submenu>
-				</p:tieredMenu>
+				</p:panelMenu>
 			</p:layoutUnit>
 			<p:layoutUnit position="center" styleClass="center" >
+				 <p:messages id="messages"  showDetail="true" showIcon="true" autoUpdate="true" closable="true" />  
+				 	
+				 	<p:ajaxStatus onstart="PF('statusLoading').show()"
+					onsuccess="PF('statusLoading').hide()" />
+
+					<p:dialog widgetVar="statusLoading" modal="false" draggable="false"
+						closable="false" resizable="false" showHeader="false">
+						<p:graphicImage library="image" name="loading2.gif" />
+					</p:dialog>
+				 
 					<ui:insert name="content" />
 			</p:layoutUnit>
 		</p:layout>
 	</h:form>
-
 </h:body>
 </html>

@@ -2,6 +2,7 @@ package br.com.clinica.bean;
 
 import java.io.IOException;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -35,6 +36,16 @@ public abstract class AbstractManagedBean {
 				.getRequestContextPath()
 				.concat("/" + "login.xhtml?faces-redirect=true");
 		redirectToPage(url);
+	}
+	
+	public void addMessageError(String msg, String param) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error" , msg);
+		FacesContext.getCurrentInstance().addMessage(null,  message);		
+	}
+	
+	public void addMessageInfo(String msg, String param) {
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", msg);
+		FacesContext.getCurrentInstance().addMessage(null,  message);
 	}
 
 	public SessionContext getSession() {

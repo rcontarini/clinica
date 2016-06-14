@@ -8,17 +8,24 @@
 	xmlns:p="http://primefaces.org/ui">
 	
 	<ui:define name="content">
+	
 		<p:tabMenu activeIndex="#{param.i}" styleClass="menuBar" style="margin-top: 1%;">
-			<p:menuitem value="Dados Principais" outcome="/pages/paciente/paciente_ini_view.xhtml" icon="ui-icon-star">
+			<p:menuitem value="Principal" outcome="/pages/paciente/paciente_ini_view.xhtml" icon="ui-icon-star">
 				<f:param name="i" value="0" ></f:param>
    			</p:menuitem>
-    		<p:menuitem value="Finalizar Cadastro" outcome="/pages/paciente/paciente_trn_final.xhtml" 	icon="ui-icon-search">
+    		<p:menuitem value="Cadastro" outcome="/pages/paciente/paciente_trn_final.xhtml" 	icon="ui-icon-search">
    				<f:param name="i" value="1" ></f:param>
     		</p:menuitem>
-    		<p:menuitem value="Cadastro Sessão" outcome="/pages/paciente/paciente_trn_final.xhtml"  icon="ui-icon-document">
+    		<p:menuitem value="Horários" outcome="/pages/sessoes/sessao_trn.xhtml"  icon="ui-icon-document">
     			<f:param name="i" value="2" ></f:param>
     		</p:menuitem>
    			 <p:menuitem value="Anamnese" outcome="/pages/paciente/paciente_trn_final.xhtml"  icon="ui-icon-wrench">
+   			 	<f:param name="i" value="3" ></f:param>
+    		</p:menuitem>
+    		<p:menuitem value="Valor" outcome="/pages/paciente/paciente_trn_final.xhtml"  icon="ui-icon-wrench">
+   			 	<f:param name="i" value="3" ></f:param>
+    		</p:menuitem>
+    		<p:menuitem value="Sessões" outcome="/pages/paciente/paciente_trn_final.xhtml"  icon="ui-icon-wrench">
    			 	<f:param name="i" value="3" ></f:param>
     		</p:menuitem>
 		</p:tabMenu>

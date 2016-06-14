@@ -61,7 +61,7 @@ public class LoginBean extends AbstractManagedBean {
 			loggedIn = true;
 			
 			}else{
-				Messages.addGlobalError("Login ou senha inválidos!");
+				addMessageError("Login ou senha invalidos!", "");
 				loggedIn = false;
 				System.out.println("Chamar tela novamente");
 			}
@@ -88,7 +88,7 @@ public class LoginBean extends AbstractManagedBean {
 		this.psicoBanco.getSenha();
 		psicologoDAO2.merge(this.psicoBanco);
 		RequestContext.getCurrentInstance().execute("PF('dialog.senha').hide()");
-		Messages.addGlobalInfo("Senha alterada com sucesso!");
+		addMessageInfo("Senha Alterada Com Sucesso!", "");
 	}
 	
 

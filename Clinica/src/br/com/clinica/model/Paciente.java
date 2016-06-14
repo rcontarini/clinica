@@ -10,7 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 
-@Entity(name = "tb_paciente")
+@Entity(name="tb_paciente")
 public class Paciente extends GenericModel {
 
 	/**
@@ -29,7 +29,7 @@ public class Paciente extends GenericModel {
 	private String telefoneParente;
 	
 	@Column
-	private Long valorPorSessão;
+	private Long valorSessao;
 	
 	@Column
 	private String sexo;
@@ -93,12 +93,12 @@ public class Paciente extends GenericModel {
 		this.convenio = convenio;
 	}
 
-	public Long getValorPorSessão() {
-		return valorPorSessão;
+	public Long getValorSessao() {
+		return valorSessao;
 	}
-
-	public void setValorPorSessão(Long valorPorSessão) {
-		this.valorPorSessão = valorPorSessão;
+	
+	public void setValorSessao(Long valorSessao) {
+		this.valorSessao = valorSessao;
 	}
 
 	public String getSexo() {
@@ -164,7 +164,7 @@ public class Paciente extends GenericModel {
 	public boolean isStatus() {
 		return status;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -179,8 +179,9 @@ public class Paciente extends GenericModel {
 		result = prime * result + ((profissao == null) ? 0 : profissao.hashCode());
 		result = prime * result + ((psicologo == null) ? 0 : psicologo.hashCode());
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
+		result = prime * result + (status ? 1231 : 1237);
 		result = prime * result + ((telefoneParente == null) ? 0 : telefoneParente.hashCode());
-		result = prime * result + ((valorPorSessão == null) ? 0 : valorPorSessão.hashCode());
+		result = prime * result + ((valorSessao == null) ? 0 : valorSessao.hashCode());
 		return result;
 	}
 
@@ -243,18 +244,21 @@ public class Paciente extends GenericModel {
 				return false;
 		} else if (!sexo.equals(other.sexo))
 			return false;
+		if (status != other.status)
+			return false;
 		if (telefoneParente == null) {
 			if (other.telefoneParente != null)
 				return false;
 		} else if (!telefoneParente.equals(other.telefoneParente))
 			return false;
-		if (valorPorSessão == null) {
-			if (other.valorPorSessão != null)
+		if (valorSessao == null) {
+			if (other.valorSessao != null)
 				return false;
-		} else if (!valorPorSessão.equals(other.valorPorSessão))
+		} else if (!valorSessao.equals(other.valorSessao))
 			return false;
 		return true;
 	}
+	
 	
 	
 

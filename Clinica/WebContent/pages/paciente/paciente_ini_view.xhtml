@@ -9,40 +9,75 @@
 
 	<ui:define name="composicao">
 		<p:panel header="Dados Principais">
-			<h:panelGrid columns="2" >
-				<p:column>
-					<p:outputLabel value="Nome:" />
-				</p:column>			
-				
-				<p:column>
-					<p:outputLabel value="#{pacienteBean.paciente.pessoa.nome}"/>
-				</p:column>
-				
-				<p:column>
-					<p:outputLabel value="Telefone:" />
-				</p:column>
-				
-				<p:column>
-					<p:outputLabel value="#{pacienteBean.paciente.pessoa.telefone}" ></p:outputLabel>
-				</p:column>
-				
-				<p:column>
-					<p:outputLabel value="Celular:" ></p:outputLabel>
-				</p:column>
-				
-				<p:column>
-					<p:outputLabel value="#{pacienteBean.paciente.pessoa.celular}" ></p:outputLabel>
-				</p:column>
-				
-				<p:column>
-					<p:outputLabel value="E-mail:" ></p:outputLabel>
-				</p:column>
-				
-				<p:column>
-					<p:outputLabel value="#{pacienteBean.paciente.pessoa.email}" ></p:outputLabel>
-				</p:column>
-			
-			</h:panelGrid>		
+		<h:panelGrid columns="2" >
+			<p:column style="width: 50%;" >
+				<h:panelGrid columns="2"  >
+					<p:column>
+						<p:outputLabel value="Nome:" style="font-size: 25px !important; font: bold !important;"/>
+					</p:column>			
+					
+					<p:column>
+						<p:outputLabel value="#{pacienteBean.paciente.pessoa.nome}" style="font-size: 20px !important;"/>
+					</p:column>
+					
+					<p:column>
+						<p:outputLabel value="Telefone:" style="font-size: 25px !important; font: bold !important;" />
+					</p:column>
+					
+					<p:column>
+						<p:outputLabel value="#{pacienteBean.paciente.pessoa.telefone}" style="font-size: 20px !important;" ></p:outputLabel>
+					</p:column>
+					
+					<p:column>
+						<p:outputLabel value="Celular:" style="font-size: 25px !important; font: bold !important;" ></p:outputLabel>
+					</p:column>
+					
+					<p:column>
+						<p:outputLabel value="#{pacienteBean.paciente.pessoa.celular}" style="font-size: 20px !important;" ></p:outputLabel>
+					</p:column>
+					
+					<p:column>
+						<p:outputLabel value="E-mail:" style="font-size: 25px !important; font: bold !important;" ></p:outputLabel>
+					</p:column>
+					
+					<p:column>
+						<p:outputLabel value="#{pacienteBean.paciente.pessoa.email}" style="font-size: 20px !important;" ></p:outputLabel>
+					</p:column>
+				</h:panelGrid>		
+			</p:column>				
+<!-- 			<p:column style="width: 50%;" > -->
+<!-- 			  <h:panelGrid style="margin-left: 100%;"> -->
+<!-- 				<p:panel header="Sessões" style="font-size: 18px !important;"> -->
+<!-- 					<h:panelGrid columns="2"> -->
+<!-- 						<p:column> -->
+<!-- 							<p:panel style="background: green !important;"> -->
+<!-- 								<h:panelGrid> -->
+<!-- 									<p:column> -->
+<!-- 										<p:outputLabel value="Realizadas" style="font-size: 15px !important;" ></p:outputLabel> -->
+<!-- 									</p:column> -->
+<!-- 									<p:column> -->
+<!-- 										<p:outputLabel value="0"  style="font-size: 60px !important;" > </p:outputLabel> -->
+<!-- 									</p:column> -->
+<!-- 								</h:panelGrid> -->
+<!-- 							</p:panel> -->
+<!-- 						</p:column> -->
+<!-- 						<p:column> -->
+<!-- 						 <p:panel style="background: yellow !important;"> -->
+<!-- 							<h:panelGrid> -->
+<!-- 									<p:column> -->
+<!-- 										<p:outputLabel value="Agendadas" style="font-size: 15px !important; font: bold !important;" ></p:outputLabel> -->
+<!-- 									</p:column> -->
+<!-- 									<p:column> -->
+<!-- 										<p:outputLabel value="10"  style="font-size: 60px !important;" > </p:outputLabel> -->
+<!-- 									</p:column> -->
+<!-- 								</h:panelGrid> -->
+<!-- 						 </p:panel> -->
+<!-- 						</p:column> -->
+<!-- 					</h:panelGrid> -->
+<!-- 				</p:panel> -->
+<!-- 			  </h:panelGrid> -->
+<!-- 			</p:column> -->
+		</h:panelGrid>
 		</p:panel>
 	</ui:define>
 </ui:composition>

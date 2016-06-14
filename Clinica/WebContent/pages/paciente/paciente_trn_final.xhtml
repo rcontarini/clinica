@@ -10,15 +10,16 @@
 	
 	<ui:define name="composicao">
 	
-	<p:panel header="Finalizar Cadastro" style="margin-top: 10px; color: #363636 !important;" >
+	<p:panel id="panel" header="Finalizar Cadastro" style="margin-top: 10px; color: #363636 !important;" >
 		<h:panelGrid columns="2" >
 				<p:column>
 					<p:outputLabel value="Data de Nascimento "   />
 				</p:column>
 				
 				<p:column>
-					<p:calendar id="nascimento"  value="#{pacienteBean.paciente.pessoa.datadeNascimento}" size="40"  
-						locale="pt"  />
+					<p:calendar id="nascimento" required="true"  value="#{pacienteBean.paciente.pessoa.datadeNascimento}" size="40"  
+						locale="pt" style="margin-left: 2.5% !important;" />
+						<p:message for="nascimento" display="tooltip"/>
 				</p:column>
 				
 				<p:column>
@@ -26,10 +27,11 @@
 				</p:column>
 				
 				<p:column>
-					<p:selectOneRadio value="#{pacienteBean.paciente.sexo}"  >
+					<p:selectOneRadio id="sexo" required="true" value="#{pacienteBean.paciente.sexo}" style="margin-left: 2.5% !important;" >
 						<f:selectItem itemValue="feminino"  itemLabel="Feminino"  />
 						<f:selectItem itemValue="masculino"  itemLabel="Masculino"  />
 					</p:selectOneRadio>
+					<p:message for="sexo" display="tooltip"/>
 				</p:column>
 				
 				<p:column>
@@ -37,7 +39,9 @@
 				</p:column>
 				
 				<p:column>
-					<p:inputText value="#{pacienteBean.paciente.pessoa.cpf}" maxlength="11" />
+					<p:inputMask id="cpf" mask="999.999.999-99" required="true" style="margin-left: 2.5% !important;" 
+					value="#{pacienteBean.paciente.pessoa.cpf}" maxlength="11"/>
+					<p:message for="cpf" display="tooltip"></p:message>
 				</p:column>
 				
 				<p:column>
@@ -45,7 +49,9 @@
 				</p:column>
 				
 				<p:column>
-					<p:inputText value="#{pacienteBean.paciente.pessoa.cep}" maxlength="11" />
+					<p:inputMask id="cep" mask="99999-999" required="true" style="margin-left: 2.5% !important;" 
+					value="#{pacienteBean.paciente.pessoa.cep}"/>
+					<p:message for="cep" display="tooltip"></p:message>
 				</p:column>
 				
 				<p:column>
@@ -53,8 +59,9 @@
 				</p:column>
 				
 				<p:column>
-					<p:inputText value="#{pacienteBean.paciente.pessoa.endereco}"/>
+					<p:inputText style="margin-left: 2.5% !important;" value="#{pacienteBean.paciente.pessoa.endereco}"/>
 				</p:column>
+				
 				
 			</h:panelGrid>
 			<h:panelGrid columns="4" >
@@ -98,7 +105,7 @@
 				</p:column>
 				
 				<p:column>
-					<p:inputText value="#{pacienteBean.paciente.profissao}" />
+					<p:inputText style="margin-left: 42.5% !important;" value="#{pacienteBean.paciente.profissao}" />
 				</p:column>
 			</h:panelGrid>
 			<h:panelGrid columns="4" >
@@ -124,11 +131,11 @@
 				</p:column>
 				
 				<p:column>
-					<p:inputTextarea  value="#{pacienteBean.paciente.observacao}"  cols="50" rows="5" />
+					<p:inputTextarea style="margin-left: 14% !important;"  value="#{pacienteBean.paciente.observacao}"  cols="50" rows="5" />
 				</p:column>
 			</h:panelGrid>
 			
-			<p:commandButton   value="Salvar" style="margin-top: 30px; border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;
+			<p:commandButton update="panel" value="Salvar" style="border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;
 			" action="#{pacienteBean.salvarCadFinal}" />
 	
 	</p:panel>
