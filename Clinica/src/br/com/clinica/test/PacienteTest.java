@@ -25,7 +25,6 @@ public class PacienteTest {
 		psicologo = psicologoDAO.buscar(1L);
 		
 		Paciente paciente = new Paciente();
-		paciente.setConvenio("não");
 		paciente.setGrauDeEscolaridade("Terceio grau");
 		paciente.setHoraSessao(new Date(2016, 04, 20, 13, 30));
 		paciente.setObservacao("Primeiro loquinho");

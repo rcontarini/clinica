@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition template="/pages/template/template.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		<p:panel style="margin-top:30px;">
+			<h:panelGrid columns="2">
+				<p:column style="width: 50%;">
+					<h:panelGrid columns="2">
+						<p:column>
+							<p:outputLabel value="Status: "></p:outputLabel>
+						</p:column>
+						<p:column>
+							
+						</p:column>
+					</h:panelGrid>
+				</p:column>
+				<p:column style="width:50%;">
+					<h:panelGrid columns="2">
+						<p:column>
+							<p:commandButton value="Novo" onclick="PF('cadastro').show()"
+								style="background: #006400; margin-left: 1400%; color: #FFFAF0; background-color: #006400;" />
+						</p:column>
+					</h:panelGrid>
+				</p:column>
+			</h:panelGrid>
+		</p:panel>
+		
+		<p:dialog header="Cadastro" id="dialog"  widgetVar="cadastro">
+			<h:panelGrid columns="2" >
+				<p:column>
+					<p:outputLabel value="Nome: " ></p:outputLabel>
+				</p:column>
+				<p:column>
+					<p:inputText value="#{convenioBean.convenio.nome}" ></p:inputText>
+				</p:column>
+				<p:column>
+					<p:outputLabel value="Valor do Repasse:" ></p:outputLabel>
+				</p:column>
+				<p:column>
+					<p:inputText value="#{convenioBean.convenio.valor}" ></p:inputText>
+				</p:column>
+			</h:panelGrid>
+			
+			<p:commandButton value="salvar" style="background: #006400;
+			 color: #FFFAF0; background-color: #006400;" actionListener="#{convenioBean.salvar}" update="lista"></p:commandButton>
+		
+		</p:dialog>
+		
+		<h:panelGrid columns="3" style="margin-top: 20px;" >
+		<p:column>
+			<p:outputLabel value="Pesquisar:" />		
+		</p:column>
+		
+		<p:column>
+			<p:inputText size="20" value="#{convenioBean.pesquisar}"/>
+		</p:column>
+		
+		<p:column>
+			<p:commandButton icon="ui-icon-check" update="form"/>
+		</p:column>
+	</h:panelGrid>
+	
+		<p:dataTable id="lista" rows="8" var="convenio" value="#{convenioBean.listaConvenio}" 
+	style="margin-top: 30px;" paginator="true" paginatorPosition="bottom">
+		
+		<p:column headerText="ID"  width="4%;">
+			<p:outputLabel value="#{convenio.id}" />
+		</p:column>
+		
+		<p:column headerText="Nome" width="25%;" >
+			<p:outputLabel value="#{convenio.nome}" />
+		</p:column>
+		
+		<p:column headerText="Repasse" width="25%;">
+			<p:outputLabel value="#{convenio.valor}" ></p:outputLabel>
+		</p:column>
+		
+		
+		<p:column headerText="Opções" width="15%;" >
+		<p:commandButton value="Excluir" actionListener="#{convenioBean.excluirConvenio}" update="lista" ajax="true"
+			style="color: #FFFAF0; background-color: #FF0000; background: #FF0000;">
+				<f:attribute name="excluirConvenio" value="#{convenio}"></f:attribute>
+				 <p:confirm header="Confirmação!" message="Tem certeza que deseja excluir este convenio?" icon="ui-icon-alert" />
+			</p:commandButton>
+			<p:commandButton value="Editar" actionListener="#{convenioBean.editar}" update="form:dialog"  oncomplete="PF('cadastro').show()" 
+			label="Finalizar Cadastro"
+			style="color: #FFFAF0; background-color: #FF8C00; background: #FF8C00;">
+				<f:attribute name="editarConvenio"  value="#{convenio}" ></f:attribute>
+			</p:commandButton>
+			
+		</p:column>
+	</p:dataTable>
+		<p:confirmDialog  global="true" showEffect="fade" hideEffect="fade" >
+	        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+	        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+   	    </p:confirmDialog>
+	</ui:define>
+</ui:composition>

@@ -22,8 +22,8 @@ public class Paciente extends GenericModel {
 	@JoinColumn
 	private Pessoa pessoa;
 	
-	@Column
-	private String convenio;
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Convenio convenio;
 	
 	@Column
 	private String telefoneParente;
@@ -83,14 +83,6 @@ public class Paciente extends GenericModel {
 
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
-	}
-
-	public String getConvenio() {
-		return convenio;
-	}
-
-	public void setConvenio(String convenio) {
-		this.convenio = convenio;
 	}
 
 	public Long getValorSessao() {
@@ -163,6 +155,14 @@ public class Paciente extends GenericModel {
 	
 	public boolean isStatus() {
 		return status;
+	}
+	
+	public Convenio getConvenio() {
+		return convenio;
+	}
+	
+	public void setConvenio(Convenio convenio) {
+		this.convenio = convenio;
 	}
 
 	@Override

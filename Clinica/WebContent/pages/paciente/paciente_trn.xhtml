@@ -15,7 +15,7 @@
 		</p:panel>	
 		
 		<p:panel header="Cadastro Inicial" style="margin-top: 10px; color: #363636 !important;" >
-			<h:panelGrid columns="2" >
+			<h:panelGrid columns="2"  >
 				<p:column>
 					<p:outputLabel value="Nome*" style="font-size: 20px;" />
 				</p:column>
@@ -73,12 +73,23 @@
 				</p:column>
 			
 				<p:column>
-					<p:selectOneMenu id="convenio" value="#{pacienteBean.paciente.convenio}" var="convenio" title="Selecione" required="true"
-					requiredMessage="Campo Obrigatorio">
+					<p:selectOneMenu  id="convenioPer" value="#{pacienteBean.verifica}" var="convenio" title="Selecione" >
 						<f:selectItem itemLabel="Selecione" itemValue="" />
 						<f:selectItem itemLabel="Sim" itemValue="sim" />
 						<f:selectItem itemLabel="Não" itemValue="nao" />
-						<p:message for="convenio"/>
+						<p:ajax listener="#{pacienteBean.verificaConvenio}" update="form:convenio" ></p:ajax>
+					</p:selectOneMenu>
+				</p:column>
+				
+				<p:column>
+					<p:outputLabel value="Convenio: "   />
+				</p:column>
+				
+				<p:column>
+					<p:selectOneMenu id="convenio" value="#{pacienteBean.convenio}" rendered="#{pacienteBean.verifica  != ('')}  " >
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItems value="#{pacienteBean.convenios}" var="convenio"
+						 itemLabel="#{convenio.nome}" itemValue="#{convenio.nome}" ></f:selectItems>
 					</p:selectOneMenu>
 				</p:column>
 			

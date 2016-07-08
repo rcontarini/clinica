@@ -14,8 +14,10 @@ import javax.faces.event.ActionEvent;
 import br.com.clinica.dao.PacienteDAO;
 import br.com.clinica.dao.PessoaDAO;
 import br.com.clinica.enums.PaginasValues;
+import br.com.clinica.model.Convenio;
 import br.com.clinica.model.Paciente;
 import br.com.clinica.model.Pessoa;
+import br.com.clinica.rn.ConvenioRN;
 import br.com.clinica.rn.PacienteRN;
 import helper.Contants;
 
@@ -32,6 +34,10 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 	private List<Paciente> listaFiltrada;
 	private String pesquisa;
 	private PacienteRN pacienteRN;
+	private List<Convenio> convenios;
+	private ConvenioRN convenioRN;
+	private String convenio;
+	private String verifica;
 	
 	@PostConstruct
 	public void init() {
@@ -61,7 +67,6 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 			System.out.println("Valorentidade Nulo");
 		}
 	}
-	
 	/*
 	 * Salvar dados principais paciente
 	 */
@@ -124,6 +129,12 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 		this.listaFiltrada = this.pacienteRN.listarPaciente();
 		addMessageInfo("Paciente deletado com sucesso!", "Info: ");
 	}
+	
+	public void verificaConvenio(){
+		getVerifica();
+		this.convenioRN = new ConvenioRN();
+		this.convenios = this.convenioRN.listarConvenios();
+	}
 
 	public void cadastrar(){
 		String url = getContextPath().concat(PaginasValues.PACIENTE_TRN.getCaminho()+"?faces-redirect=true");
@@ -185,5 +196,41 @@ public class PacienteBean extends AbstractManagedBean implements Serializable{
 	
 	public void setPacienteRN(PacienteRN pacienteRN) {
 		this.pacienteRN = pacienteRN;
+	}
+	
+	public List<Convenio> getConvenios() {
+		if(convenios == null)
+			convenios = new ArrayList<Convenio>();
+		return convenios;
+	}
+	
+	public void setConvenios(List<Convenio> convenios) {
+		this.convenios = convenios;
+	}
+	
+	public ConvenioRN getConvenioRN() {
+		if(convenioRN == null)
+			convenioRN = new ConvenioRN();
+		return convenioRN;
+	}
+	
+	public void setConvenioRN(ConvenioRN convenioRN) {
+		this.convenioRN = convenioRN;
+	}
+	
+	public String getConvenio() {
+		return convenio;
+	}
+	
+	public void setConvenio(String convenio) {
+		this.convenio = convenio;
+	}
+	
+	public String getVerifica() {
+		return verifica;
+	}
+	
+	public void setVerifica(String verifica) {
+		this.verifica = verifica;
 	}
 }

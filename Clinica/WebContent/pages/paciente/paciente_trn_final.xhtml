@@ -10,8 +10,89 @@
 	
 	<ui:define name="composicao">
 	
-	<p:panel id="panel" header="Finalizar Cadastro" style="margin-top: 10px; color: #363636 !important;" >
-		<h:panelGrid columns="2" >
+	<p:panel>
+	<p:tabView dynamic="true" cache="true" >
+		<p:tab title="Cadastro Inicial"  >
+				<h:panelGrid columns="2" >
+				<p:column>
+					<p:outputLabel value="Nome*" style="font-size: 20px;" />
+				</p:column>
+				
+				<p:column>
+					<p:inputText id="nome" value="#{pacienteBean.paciente.pessoa.nome}" size="50" required="true" 
+					requiredMessage="Favor preencher campos obrigatórios"/>
+					<p:message for="nome"/>
+				</p:column>
+				
+				<p:column>
+					<p:outputLabel value="Grupo*"   />
+				</p:column>
+				
+				<p:column>
+					<p:selectOneRadio id="grupo" value="#{pacienteBean.paciente.grupo}" required="true"  requiredMessage="Campo Grupo" >
+						<f:selectItem itemValue="adultos"  itemLabel="Adultos"  />
+						<f:selectItem itemValue="criancas"  itemLabel="Crianças"  />
+						<f:selectItem itemValue="idosos"  itemLabel="Idosos"  />
+						<f:selectItem itemValue="adolescentes"  itemLabel="Adolescentes"  />
+					</p:selectOneRadio>
+					<p:message for="grupo"/>
+				</p:column>
+				
+				<p:column>
+					<p:outputLabel value="Telefone Celular*"  />
+				</p:column>			
+				
+				<p:column>
+					<p:inputMask id="cel" mask="(99) 99999-9999" value="#{pacienteBean.paciente.pessoa.celular}" required="true"
+					size="12" requiredMessage="Campo Obrigatório" />
+					<p:message for="cel"/>
+				</p:column>
+				
+				<p:column>
+					<p:outputLabel  value="Telefone Fixo" />
+				</p:column>
+				
+				<p:column>
+					<p:inputMask size="12" mask="(99) 9999-9999" value="#{pacienteBean.paciente.pessoa.telefone}" />
+				</p:column>
+				
+				
+		
+				<p:column>
+					<p:outputLabel  value="E-mail" />
+				</p:column>
+				<p:column>
+					<p:inputText id="email" value="#{pacienteBean.paciente.pessoa.email}" size="30" required="true" 
+					requiredMessage="Campo Obrigatorio"/>
+					<p:message for="email"></p:message>
+				</p:column>
+				<p:column>
+					<p:outputLabel  value="Possui Convênio? " />
+				</p:column>
+			
+				<p:column>
+					<p:selectOneMenu id="convenio" value="#{pacienteBean.paciente.convenio}" var="convenio" title="Selecione" >
+						<f:selectItem itemLabel="Selecione" itemValue="" />
+						<f:selectItem itemLabel="Sim" itemValue="sim" />
+						<f:selectItem itemLabel="Não" itemValue="nao" />
+					</p:selectOneMenu>
+				</p:column>
+			
+				<p:column>
+					<p:outputLabel value="Valor por Sessão"  />
+				</p:column>	
+				
+				<p:column>
+					<p:inputText  id="valor" size="5" value="#{pacienteBean.paciente.valorSessao}"  required="true"
+					  requiredMessage="Campo Obrigatorio"/>
+					<p:message for="valor" />
+				</p:column>
+				</h:panelGrid>
+			<p:commandButton   value="Avançar" style="margin-top: 30px; border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;
+			" action="#{pacienteBean.salvar}" />
+		</p:tab>
+		<p:tab title="Finalizar Cadastro" >
+				<h:panelGrid columns="2" >
 				<p:column>
 					<p:outputLabel value="Data de Nascimento "   />
 				</p:column>
@@ -135,9 +216,10 @@
 				</p:column>
 			</h:panelGrid>
 			
-			<p:commandButton update="panel" value="Salvar" style="border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;
+			<p:commandButton update="@this" value="Salvar" style="border: none !important; background: #006400; color: #FFFAF0; background-color: #006400;
 			" action="#{pacienteBean.salvarCadFinal}" />
-	
+		</p:tab>
+	</p:tabView>
 	</p:panel>
 	
 	</ui:define>

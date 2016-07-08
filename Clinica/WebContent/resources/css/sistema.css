@@ -2,11 +2,15 @@
 
 
 .ui-widget, .ui-widget .ui-widget {    
-    font-size: 96% !important;
+    font-size: 90% !important;
 }
 
 body{
 	
+}
+
+#schedule, .ui-widget, .ui-widget .ui-widget{
+	font-size: 94% !important;
 }
 
 .ui-menuitem-text {

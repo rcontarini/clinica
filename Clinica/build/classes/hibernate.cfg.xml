@@ -36,6 +36,7 @@
 		<mapping class="br.com.clinica.model.Pessoa" />
 		<mapping class="br.com.clinica.model.Psicologo" />
 		<mapping class="br.com.clinica.model.Perfil" />
+		<mapping class="br.com.clinica.model.Convenio" />
 
 
 	</session-factory>
